@@ -139,8 +139,6 @@ const render = (arr) => {
   });
 };
 
-firstRender();
-
 const renderUpdate = () => {
   const selectedFeatures = Array.from(featuresFieldset.querySelectorAll('input[name ="features"]:checked'), (input) => input.value);
   render(data
@@ -152,4 +150,4 @@ const renderUpdate = () => {
     .slice(0, 10));
 };
 
-export { resetMap, renderUpdate, render, allData };
+export { resetMap, renderUpdate, render, allData, firstRender };

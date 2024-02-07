@@ -159,6 +159,7 @@
               <div class="ad-form-header__preview">
                 <img
                   src="img/muffin-grey.svg"
+                  class="ad-form-header__preview-image"
                   alt="Аватар пользователя"
                   width="40"
                   height="44"
@@ -170,7 +171,7 @@
                   id="avatar"
                   name="avatar"
                   class="ad-form-header__input visually-hidden"
-                  accept="image/png, image/jpeg, image/jpg, image/gif"
+                  accept="image/png, image/jpeg, image/jpg"
                 />
                 <label class="ad-form-header__drop-zone" for="avatar"
                   >Загрузить<br />фото...</label
@@ -207,7 +208,7 @@
               id="address"
               name="address"
               type="text"
-              value="35.55190, 139.45330"
+              value="35.68212, 139.73581"
               readonly
             />
           </fieldset>
@@ -227,8 +228,8 @@
               id="price"
               name="price"
               type="number"
-              placeholder="5000"
-              value="5000"
+              placeholder="1000"
+              value="1000"
               required
               min="1000"
               max="100000"
@@ -366,13 +367,14 @@
                   id="images"
                   name="images"
                   class="ad-form__input visually-hidden"
-                  accept="image/png, image/jpeg, image/jpg, image/gif"
+                  accept="image/png, image/jpeg, image/jpg"
                 />
                 <label for="images" class="ad-form__drop-zone"
                   >Загрузить<br />фото...</label
                 >
               </div>
-              <div class="ad-form__photo"></div>
+              <div class="ad-form__photo">
+              </div>
             </div>
           </fieldset>
           <fieldset class="ad-form__element ad-form__element--submit">

@@ -1,4 +1,5 @@
 import { renderSuccess, renderError } from './popup';
+import {sliderElement} from './slider';
 const form = document.querySelector('.ad-form');
 const roomNumber = document.querySelector('#room_number');
 const guestCount = document.querySelector('#capacity');
@@ -12,12 +13,13 @@ const oneGuest = guestCount[2];
 const twoGuest = guestCount[1];
 const threeGuest = guestCount[0];
 
-const prisitineValidate = () => {
-  const pristine = new Pristine(form, {
-    classTo: 'ad-form__element',
-    errorTextParent: 'ad-form__element',
-    errorClass: 'ad-form__element--invalid'
-  });
+const pristine = new Pristine(form, {
+  classTo: 'ad-form__element',
+  errorTextParent: 'ad-form__element',
+  errorClass: 'ad-form__element--invalid'
+});
+
+const onFormSubmit = () => {
   form.addEventListener('submit', (evt) => {
     evt.preventDefault();
     const valid = pristine.validate();
@@ -43,7 +45,7 @@ const prisitineValidate = () => {
 };
 
 
-const offSeatNumber = () => {
+const createOffSeatNumber = () => {
   zeroGuest.disabled = true;
   oneGuest.disabled = false;
   twoGuest.disabled = true;
@@ -51,7 +53,7 @@ const offSeatNumber = () => {
   oneGuest.selected = true;
 };
 
-const roomValue = () => {
+const createRoomValue = () => {
   if (roomNumber.value === '1') {
     zeroGuest.disabled = true;
     oneGuest.disabled = false;
@@ -85,18 +87,28 @@ const roomValue = () => {
 const houseValue = () => {
   if (houseType.value === 'bungalow') {
     priceinput.min = '0';
+    priceinput.placeholder = '0';
+    sliderElement.noUiSlider.set('0');
   }
   if (houseType.value === 'flat') {
     priceinput.min = '1000';
+    priceinput.placeholder = '1000';
+    sliderElement.noUiSlider.set('1000');
   }
   if (houseType.value === 'hotel') {
     priceinput.min = '3000';
+    priceinput.placeholder = '3000';
+    sliderElement.noUiSlider.set('3000');
   }
   if (houseType.value === 'house') {
     priceinput.min = '5000';
+    priceinput.placeholder = '5000';
+    sliderElement.noUiSlider.set('5000');
   }
   if (houseType.value === 'palace') {
     priceinput.min = '10000';
+    priceinput.placeholder = '10000';
+    sliderElement.noUiSlider.set('10000');
   }
 };
 
@@ -128,14 +140,30 @@ const onTimeoutValue = () => {
   }
 };
 
-const catchChange = () => {
-  roomNumber.addEventListener('change', roomValue);
-  houseType.addEventListener('change', houseValue);
-  timein.addEventListener('change', onTimeinValue);
-  timeout.addEventListener('change', onTimeoutValue);
-  roomValue();
-  prisitineValidate();
+const onRoomNumberChange = () => {
+  roomNumber.addEventListener('change', createRoomValue);
 };
 
-export { catchChange, offSeatNumber };
+const onHouseTypeChange = () => {
+  houseType.addEventListener('change', houseValue);
+};
+
+const onTimeinChange = () => {
+  timein.addEventListener('change', onTimeinValue);
+};
+
+const onTimeoutChange = () => {
+  timeout.addEventListener('change', onTimeoutValue);
+};
+
+const catchChange = () => {
+  onRoomNumberChange();
+  onHouseTypeChange();
+  onTimeinChange();
+  onTimeoutChange();
+  createRoomValue();
+  onFormSubmit();
+};
+
+export { catchChange, createOffSeatNumber };
 

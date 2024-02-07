@@ -44,26 +44,26 @@ const renderError = () => {
   const errorButton = document.querySelector('.error__button');
   publicButton.disabled = true;
 
-  const errorButtonClick = () => {
+  const createErrorButtonClick = () => {
     errorBox.remove();
     publicButton.disabled = false;
   };
 
   const OnErrorButtonClick = () => {
-    errorButtonClick();
+    createErrorButtonClick();
     errorButton.removeEventListener('click', OnErrorButtonClick);
   };
 
   const OnErrorPopupKeydown = (evt) => {
     if (evt.key === 'Escape') {
       evt.preventDefault();
-      errorButtonClick();
+      createErrorButtonClick();
       document.removeEventListener('keydown', OnErrorPopupKeydown);
     }
   };
 
   const onErrorDocumentCLick = () => {
-    errorButtonClick();
+    createErrorButtonClick();
     errorBox.removeEventListener('click', onErrorDocumentCLick);
   };
 

@@ -2,13 +2,13 @@ const sliderElement = document.querySelector('.ad-form__slider');
 const price = document.querySelector('#price');
 
 
-const slider = () => {
+const createSlider = () => {
   noUiSlider.create(sliderElement, {
     range: {
-      min: 1000,
+      min: 0,
       max: 100000,
     },
-    start: 5000,
+    start: price.placeholder,
     step: 100,
     connect: 'lower',
     format: {
@@ -33,4 +33,4 @@ const slider = () => {
   });
 };
 
-export { slider };
+export { createSlider, sliderElement };

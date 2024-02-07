@@ -1,12 +1,14 @@
 const fileChooserAvatar = document.querySelector('#avatar');
 const fileChooserHousing = document.querySelector('#images');
-const previewAvatar = document.querySelector('.ad-form-header__preview img');
+const previewImage = document.querySelector('.ad-form-header__preview-image');
 const previewHousingBlock = document.querySelector('.ad-form__photo');
+
 
 fileChooserAvatar.addEventListener('change', () => {
   const fileAvatar = fileChooserAvatar.files[0];
-  previewAvatar.src = URL.createObjectURL(fileAvatar);
+  previewImage.src = URL.createObjectURL(fileAvatar);
 });
+
 
 let img;
 
@@ -22,3 +24,6 @@ fileChooserHousing.addEventListener('change', () => {
   const fileHousing = fileChooserHousing.files[0];
   img.src = URL.createObjectURL(fileHousing);
 });
+
+
+export {previewImage};

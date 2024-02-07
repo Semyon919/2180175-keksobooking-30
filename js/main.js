@@ -1,9 +1,7 @@
-import { catchChange, offSeatNumber } from './user-form';
-import './map.js';
-import './network.js';
-import './popup.js';
-import './avatar.js';
-import { slider } from './slider.js';
+import { catchChange, createOffSeatNumber } from './user-form';
+import {firstRender} from './map.js';
+import { createSlider } from './slider.js';
+firstRender();
 catchChange();
-offSeatNumber();
-slider();
+createOffSeatNumber();
+createSlider();
